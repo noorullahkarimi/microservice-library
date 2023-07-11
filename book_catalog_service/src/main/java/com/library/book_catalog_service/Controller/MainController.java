@@ -11,7 +11,7 @@ import java.util.List;
 @Controller
 public @ResponseBody
 class MainController {
-    @RequestMapping("/")
+    @RequestMapping("/catalog")
     public List<Catalog> index(){
         List<Catalog> catalogs = new ArrayList<>();
 

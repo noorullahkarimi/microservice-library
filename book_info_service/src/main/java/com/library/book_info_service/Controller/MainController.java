@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public @ResponseBody
@@ -17,10 +19,10 @@ class MainController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @RequestMapping("/")
-    public Info index(){
-        Catalog catalog = restTemplate.getForObject("http://localhost:8081/", Catalog.class);
-
-        return arrayList;
+    @RequestMapping("/info")
+    public Catalog index(){
+        List<Catalog> catalogs = Arrays.asList(restTemplate.getForObject("http://localhost:8081/catalog", Catalog[].class));
+        Catalog catalog = catalogs.get(0); // get the first Catalog object from the list
+        return catalog;
     }
 }
