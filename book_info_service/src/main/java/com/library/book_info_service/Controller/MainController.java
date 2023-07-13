@@ -21,7 +21,7 @@ class MainController {
 
     @RequestMapping("/info")
     public Catalog index(){
-        List<Catalog> catalogs = Arrays.asList(restTemplate.getForObject("http://localhost:8081/catalog", Catalog[].class));
+        List<Catalog> catalogs = Arrays.asList(restTemplate.getForObject("http://CATALOG-SERVICE:8081/catalog", Catalog[].class));
         Catalog catalog = catalogs.get(0); // get the first Catalog object from the list
         return catalog;
     }
